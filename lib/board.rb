@@ -27,6 +27,8 @@ class Board
       centre_cell.update_to_die
     elsif centre_cell.live and overpopulation?
       centre_cell.update_to_die
+    elsif !centre_cell.live and reproduction?
+      centre_cell.update_to_live
     end
   end
 
