@@ -1,6 +1,6 @@
 class StarterBoard
 
-  attr_reader :cell
+  attr_reader :cell, :x, :y
   def initialize(x, y, cell = Cell.new)
     @x = x
     @y = y
@@ -8,10 +8,12 @@ class StarterBoard
   end
 
   def show
-    array = []
-    @y.times do
-      array.push(Array.new(@x, cell))
-    end
-    array
+    Array.new(y).map { |row| create_row }
+  end
+
+  private
+
+  def create_row
+    Array.new(x, cell)
   end
 end
