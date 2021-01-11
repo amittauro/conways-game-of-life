@@ -58,13 +58,26 @@ describe Board do
         expect(board.overpopulation?).to eq(true)
       end
 
-      it 'returns true when there are more than 3 live neighbours' do
+      it 'returns true when there are more than 5 live neighbours' do
         board = Board.new([
           [cell1, cell1, cell1],
           [cell1, cell1, cell2],
           [cell1, cell1, cell1],
         ])
         expect(board.overpopulation?).to eq(true)
+      end
+    end
+  end
+
+  describe '#reproduction?' do
+    context 'when the centre becomes a live cell' do
+      it 'returns true if there are 3 live neighbours' do
+        board = Board.new([
+          [cell1, cell1, cell1],
+          [cell2, cell2, cell2],
+          [cell2, cell2, cell2],
+        ])
+        expect(board.reproduction?).to eq(true)
       end
     end
   end

@@ -17,6 +17,10 @@ class Board
     count_live_cells > 4
   end
 
+  def reproduction?
+    count_live_cells == 3
+  end
+
   private
 
   def count_live_cells
