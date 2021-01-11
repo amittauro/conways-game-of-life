@@ -46,4 +46,17 @@ describe Board do
       end
     end
   end
+
+  describe '#overpopulation?' do
+    context 'when the the centre cell dies due to overpopulation' do
+      it 'returns true when there are more than 3 live neighbours' do
+        board = Board.new([
+          [cell1, cell1, cell2],
+          [cell1, cell1, cell2],
+          [cell1, cell2, cell1],
+        ])
+        expect(board.overpopulation?).to eq(true)
+      end
+    end
+  end
 end

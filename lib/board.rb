@@ -13,6 +13,10 @@ class Board
     count_live_cells == 2 || count_live_cells == 1
   end
 
+  def overpopulation?
+    count_live_cells > 4
+  end
+
   private
 
   def count_live_cells
