@@ -81,4 +81,18 @@ describe Board do
       end
     end
   end
+
+  describe '#run' do
+    context 'when a tick occurs' do
+      it 'asks the cell to update_to_die for underpopulation' do
+        board = Board.new([
+          [cell1, cell2, cell2],
+          [cell2, cell1, cell2],
+          [cell2, cell2, cell2],
+        ])
+        expect(cell1).to receive(:update_to_die)
+        board.run
+      end
+    end
+  end
 end
