@@ -13,12 +13,29 @@ class StarterBoard
   end
 
   def get_boards
-    board_row = []
-    3.times do |row|
-      board_row.push(show[row][0..2])
+    s = y - 2
+    l = x - 2
+    l.times do |f|
+      s.times do |i|
+        board_row = []
+        puts "i #{i}"
+        puts "f #{f}"
+        board_row.push(show[f][i..i+2])
+        board_row.push(show[f+1][i..i+2])
+        board_row.push(show[f+2][i..i+2])
+        board.new(board_row)
+      end
     end
-    board_row
-    board.new(board_row)
+    # 2..y.times do |column|
+    #   board.push(show[0][y-2..])
+    #
+    #
+    # board_row = []
+    # x.times do |row|
+    #   board_row.push(show[x][0..2])
+    # end
+    # board_row
+    # board.new(board_row)
   end
 
   private

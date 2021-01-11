@@ -28,6 +28,14 @@ describe StarterBoard do
         )
         starter_board.get_boards
       end
+
+      it 'calls upon the board class multiple times' do
+        cell = double('cell')
+        board = double('board')
+        starter_board = StarterBoard.new(4, 4, cell, board)
+        expect(board).to receive(:new).exactly(4).times
+        starter_board.get_boards
+      end
     end
   end
 end
