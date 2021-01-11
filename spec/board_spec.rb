@@ -35,6 +35,15 @@ describe Board do
         ])
         expect(board.underpopulation?).to eq(true)
       end
+
+      it 'returns true when there are no live neighbours' do
+        board = Board.new([
+          [cell2, cell2, cell2],
+          [cell2, cell1, cell2],
+          [cell2, cell2, cell2],
+        ])
+        expect(board.underpopulation?).to eq(true)
+      end
     end
   end
 end
