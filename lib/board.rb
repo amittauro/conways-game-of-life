@@ -1,8 +1,9 @@
 class Board
 
-  attr_reader :cells
+  attr_reader :cells, :centre_cell
   def initialize(cells)
     @cells = cells.flatten!
+    @centre_cell = @cells[4]
   end
 
   def survives?
@@ -22,10 +23,9 @@ class Board
   end
 
   def run
-    centre_cell = cells[4]
-    centre_cell.update_to_die if centre_cell_will_die?(centre_cell)
+    centre_cell.update_to_die if centre_cell_will_die?
 
-    centre_cell.update_to_live if centre_cell_becomes_live?(centre_cell)
+    centre_cell.update_to_live if centre_cell_becomes_live?
   end
 
   private
@@ -34,11 +34,11 @@ class Board
     cells.count{ |cell| cell.live }
   end
 
-  def centre_cell_will_die?(centre_cell)
+  def centre_cell_will_die?
     centre_cell.live and (underpopulation? || overpopulation? || reproduction?)
   end
 
-  def centre_cell_becomes_live?(centre_cell)
+  def centre_cell_becomes_live?
     !centre_cell.live and reproduction?
   end
 end
