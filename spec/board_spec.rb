@@ -93,6 +93,16 @@ describe Board do
         expect(cell1).to receive(:update_to_die)
         board.run
       end
+
+      it 'asks the cell to update_to_die for overpopulation' do
+        board = Board.new([
+          [cell1, cell2, cell2],
+          [cell1, cell1, cell2],
+          [cell1, cell1, cell2],
+        ])
+        expect(cell1).to receive(:update_to_die)
+        board.run
+      end
     end
   end
 end

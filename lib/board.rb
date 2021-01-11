@@ -25,6 +25,8 @@ class Board
     centre_cell = cells[4]
     if centre_cell.live and underpopulation?
       centre_cell.update_to_die
+    elsif centre_cell.live and overpopulation?
+      centre_cell.update_to_die
     end
   end
 
