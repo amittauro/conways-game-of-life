@@ -8,6 +8,6 @@ class Board
   def survives?
     cells.flatten!
     live_cells = cells.count{ |cell| cell.live }
-    live_cells == 3
+    live_cells == 3 || live_cells == 4
   end
 end
