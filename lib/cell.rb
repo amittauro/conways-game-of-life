@@ -4,4 +4,8 @@ class Cell
   def initialize(live)
     @live = live
   end
+
+  def update_to_die
+    @live = false
+  end
 end
