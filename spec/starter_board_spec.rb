@@ -14,4 +14,20 @@ describe StarterBoard do
       end
     end
   end
+
+  describe '#get_boards' do
+    context 'getting the board' do
+      it 'calls upon the board class' do
+        cell = double('cell')
+        board = double('board')
+        starter_board = StarterBoard.new(3, 3, cell, board)
+        expect(board).to receive(:new).with(
+          [[cell, cell, cell],
+          [cell, cell, cell],
+          [cell, cell, cell]]
+        )
+        starter_board.get_boards
+      end
+    end
+  end
 end
