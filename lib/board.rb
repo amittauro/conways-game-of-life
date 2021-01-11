@@ -9,6 +9,10 @@ class Board
     count_live_cells == 3 || count_live_cells == 4
   end
 
+  def underpopulation?
+    count_live_cells == 2
+  end
+
   private
 
   def count_live_cells

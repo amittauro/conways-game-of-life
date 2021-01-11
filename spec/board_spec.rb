@@ -3,7 +3,7 @@ require './lib/board'
 describe Board do
   let(:cell1) { double('cell', :live => true) }
   let(:cell2) { double('cell', :live => false) }
-  describe '#survives' do
+  describe '#survives?' do
     context 'when the cente cell is alive and survives' do
       it 'returns true for 2 live neighbours' do
         board = Board.new([
@@ -21,6 +21,19 @@ describe Board do
           [cell2, cell2, cell1],
         ])
         expect(board.survives?).to eq(true)
+      end
+    end
+  end
+
+  describe '#underpopulation?' do
+    context 'when the centre cell dies due to underpopulation' do
+      it 'returns true when there are less than 2 live neighbours' do
+        board = Board.new([
+          [cell2, cell2, cell2],
+          [cell2, cell1, cell2],
+          [cell2, cell2, cell1],
+        ])
+        expect(board.underpopulation?).to eq(true)
       end
     end
   end
