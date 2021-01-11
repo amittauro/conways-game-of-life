@@ -23,13 +23,9 @@ class Board
 
   def run
     centre_cell = cells[4]
-    if centre_cell.live and underpopulation?
-      centre_cell.update_to_die
-    elsif centre_cell.live and overpopulation?
-      centre_cell.update_to_die
-    elsif !centre_cell.live and reproduction?
-      centre_cell.update_to_live
-    end
+    centre_cell.update_to_die if centre_cell_will_die?(centre_cell)
+
+    centre_cell.update_to_live if centre_cell_becomes_live?(centre_cell)
   end
 
   private
@@ -38,4 +34,11 @@ class Board
     cells.count{ |cell| cell.live }
   end
 
+  def centre_cell_will_die?(centre_cell)
+    centre_cell.live and (underpopulation? || overpopulation? || reproduction?)
+  end
+
+  def centre_cell_becomes_live?(centre_cell)
+    !centre_cell.live and reproduction?
+  end
 end
