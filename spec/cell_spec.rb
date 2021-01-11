@@ -20,4 +20,12 @@ describe Cell do
       expect(cell.live).to eq(false)
     end
   end
+
+  describe '#update_to_live' do
+    it 'changes live to true' do
+      cell = Cell.new(false)
+      cell.update_to_live
+      expect(cell.live).to eq(true)
+    end
+  end
 end
